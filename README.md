@@ -29,3 +29,18 @@ fs.readFile('#FILE_LOCATION', 'utf-8', (err, #DATA_NAME) =>{CODE wanna execute a
 ### Syntax-write-file
 
 fs.writeFile('#FILE_LOCATION', `#DATA_WANNA_WRITE`, 'utf-8', (err) => { CODE wanna execute after file-write});
+
+## Creating a Server
+
+First we need to initialise a module called http. We will use it to creat a web server. It has two parameter 'req' and 'res'. 'res' used for send response to the browser. It can be a message or a html page. 'req' is an object with lots of data. Some of the we will be using during this course.
+Here we also need to define a port and IP address, where we want to send response. Adding a callback function is optional with it
+
+### Syntax-web-server
+
+const #SERVER_NAME = http.createServer((req, res) => {
+res.end('#SERVER_MESSAGE');
+});
+
+#SERVER_NAME.listen(#PORT, '#IP', () => {
+console.log('#A_SUITABLE_MESSAGE');
+});
