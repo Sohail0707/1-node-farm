@@ -1,6 +1,6 @@
 # 1-Node-Farm
 
-Write now I'm learning back-end web development from udemy. Through this course, I'll be learning Nodejs, Express and mongoDB database. In here I'll be writing my learning experience
+Right now I'm learning back-end web development from udemy. Through this course, I'll be learning Nodejs, Express and mongoDB database. In here I'll be writing my learning experience
 
 ### Using Module
 
