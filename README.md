@@ -32,7 +32,7 @@ fs.writeFile('#FILE_LOCATION', `#DATA_WANT_TO_WRITE`, 'utf-8', (err) => { CODE w
 
 ## Creating a Server
 
-First we need to initialise a module called http. We will use it to creat a web server. It has two parameter 'req' and 'res'. 'res' used for send response to the browser. It can be a message or a html page. 'req' is an object with lots of data. Some of theM we will be using during this course.
+First we need to initialise a module called http. We will use it to creat a web server. It has two parameter 'req' and 'res'. 'res' used for send response to the browser. It can be a message or a html page. 'req' is an object with lots of data. Some of theM we will be using during this course.<br/>
 Here we also need to define a port and IP address, where we want to send response. Adding a callback function is optional with it
 
 ### Syntax-web-server
@@ -52,15 +52,16 @@ We use it inside the server code.
 
 ### Syntax-Routing
 
-const NAME_OF_THE_VARIATION = req.THE_NAME_INITIALISED_FOR_url;
+const NAME_OF_THE_VARIATION = req.THE_NAME_INITIALISED_FOR_url;<br/>
 The url is look like — IP:PORT/NAME_OF_THE_VARIATION (127.0.0.1:8000/Overview);
 
-We can also secify a status code for a specific routing. For example we can specify a status code 404, if the url is invalid.
+We can also secify a status code for a specific routing.<br/>
+For example we can specify a status code 404, if the url is invalid.
 res.writeHead(404);
 
 ## HTTP HEADER
 
-httpheader is set of information that derfines the type of content we are sending to the browser as a respnse. There are many headers. But we can also specify our own header.
+http header is set of information that derfines the type of content we are sending to the browser as a respnse. There are many headers. But we can also specify our own header.
 
 ### Syntax-Header
 
@@ -76,3 +77,29 @@ When I'm implementing this, I found that I wrote the readFile code into the serv
 ## HTML Template
 
 Here we have templates to show pages of NODE FARM application. Template is just a HTML file. For a certain request, We will send the HTML page as a response. To convert a HTML file into a template, I'll be replacing every data with placeholder. And at time of sending the template to the browser, I'll replace the data with actual data from the JSON file.
+
+## Filling the HTML template with data
+
+First we read the HTML templates at the begining. we can write it Synchronously. Because we will read the data at once at the begining. So it's not gonna block our code.
+
+### Step-1 (call a function for each object in the data.json file)
+
+Keep in mind, we cannon use data.json file in javascript. We need to convert that into javascript object. For that we use a method JSON.parse(#DATA); and store it into a variable.<br/>
+Now we will call the function for into a specific rout where we want to send our html page. In this project I am using '/Overview'
+
+#### CALLING THE 'REPLACE TEMPLATE' FUNCTION
+
+const #HTML_PAGE = #DATA_OBJ.map((el) => replaceTemplate(#TEMPLATE, el)).join('');<br/>
+#HTML_PAGE-- 'name of replaced html file, which we are gonna send to the browser';<br/>
+#DATA_OBJ-- 'const #DATA_OBJ = JSON.parse(#DATA)';<br/>
+el-- 'for each element'<br/>
+#TEMPLATE-- 'html template where we want replace the placeholders'<br/>
+.join('')-- 'used to convert the object into a string'
+
+### Step-2 (make the function replaceTemplate());
+
+We will make this function outside the server code. Then change every placeholder that we made in the template.<br/>
+const replaceTemplate = (temp, product) => {
+let output = temp.replace(/{%PRODUCTNAME%}/g, product.productName);
+return output;
+}
