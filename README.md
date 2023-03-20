@@ -145,3 +145,21 @@ Then find out 'package.json' file. Then change this ("test": "echo \"Error: no t
 
 In this method we install nodemon globaly. means we can use it in any project. Run 'npm i nodemon--global' If this returns any error. Run 'sudo npm i nodemon--global' this will ask your system password. Because it will install into your entire system.<br/>
 To run it we don't need to edit any code in 'package.json' file. We simply run 'nodemon index.js'
+
+## MODULE VERSION
+
+In 'package.json' file we can find the version that we installed of a package. ("nodemon": "^2.0.21") <br/>
+"#PACKAGE_NAME": "^#MAJOR_RELEASE.#MINOR_RELEASE.PATCH_UPDATE" <br/>
+Here '^' means it support only minor and patch release. '~' means it support only patch release and '\*' means all release.
+
+## CHECK FOR UPDATE
+
+'npm outdated'
+
+## UPDATE A PACKAGE
+
+'npm update #PACKAGE_NAME'
+
+### IMPORTENT NOTE FOR NPM PACKAGE
+
+When we send our code to github or any where. We don't send the 'node_module' folder. That's why when someone will download the code. they need run 'npm install' to get the 'node_module' folder. This instraction will download the required packages mentioned in 'package.json' folder.
