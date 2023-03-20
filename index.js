@@ -1,7 +1,6 @@
 // Using Module //////////////////////////
 const fs = require('fs');
 const http = require('http');
-const path = require('path');
 const url = require('url');
 
 /*
@@ -31,12 +30,18 @@ fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
 });*/
 
 // SERVER ///////////////////////////
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8'); //This code written synchronously
+const dataObj = JSON.parse(data); //Converted the json data into js data object
+
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   if (pathName === '/' || pathName === '/Overview') {
     res.end('This is the Overview');
   } else if (pathName === '/Product') {
     res.end('This is the Product');
+  } else if (pathName === '/api') {
+    res.writeHead(200, { 'Content-type': 'application/json' });
+    res.end(data); //this data coming from the top level code
   } else {
     res.writeHead(404, {
       'content-type': 'text/html',

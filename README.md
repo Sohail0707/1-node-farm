@@ -67,3 +67,8 @@ httpheader is set of information that derfines the type of content we are sendin
 res.writeHead(#STATUS_CODE, {
 'content-type': '#TYPE_OF_CONTENT',
 });
+
+## Implementing an API
+
+In an API we read a file from memory, and send the data to the browser as a response.
+When I'm implementing this, I found that I wrote the readFile code into the server code. Although it's not a major problem. But when a client will send a request to the server, the fileRead code will be executed each time. That's why wrote the fileRead code at the top level code.
