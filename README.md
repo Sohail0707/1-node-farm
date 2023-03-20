@@ -73,11 +73,11 @@ Here we have templates to show pages of NODE FARM application. Template is just 
 
 First we read the HTML templates at the begining. we can write it Synchronously. Because we will read the data at once at the begining. So it's not gonna block our code.<br/>
 
-<h4>STEP-1: (call a function for each object in the data.json file)</h4>
+<h3>STEP-1: (call a function for each object in the data.json file)</h3>
 Keep in mind, we cannon use data.json file in javascript. We need to convert that into javascript object. For that we use a method JSON.parse(#DATA); and store it into a variable.<br/>
 Now we will call the function for into a specific rout where we want to send our html page. In this project I am using '/Overview' <br/>
 
-<h6>CALLING-THE-'replaceTemplate()'-FUNCTION</h6>
+<h4>CALLING-THE-'replaceTemplate()'-FUNCTION</h4>
 
 const #HTML_PAGE = #DATA_OBJ.map((el) => replaceTemplate(#TEMPLATE, el)).join('');<br/>
 #HTML_PAGE-- 'name of replaced html file, which we are gonna send to the browser';<br/>
@@ -86,7 +86,7 @@ el-- 'for each element'<br/>
 #TEMPLATE-- 'html template where we want replace the placeholders'<br/>
 .join('')-- 'used to convert the object into a string'
 
-<h4>STEP-2: (make the function replaceTemplate())</h4>
+<h3>STEP-2: (make the function replaceTemplate())</h3>
 
 We will make this function outside the server code. Then change every placeholder that we made in the template.<br/>
 const replaceTemplate = (temp, product) => {let output = temp.replace(/{%PRODUCTNAME%}/g, product.productName);<br/>
@@ -105,12 +105,12 @@ This is a latest syntax I am also less familier with it.
 
 ## USING OWN MODULE
 
-<h4>MAKE-OWN-MODULE</h4>
+<h3>Make Own Module</h3>
 First make a javascript file. Inside the file using this Syntax<br/>
 module.exports = (#PARAMETER) => {#CODE FOR THE FUNCTION}<br/>
 This function doesn't need any name.<br/>
 
-<h4>IMPORT-OWN-MODULE</h4>
+<h3>Import Own Module</h3>
 const #MODULE_NAME = require('#LOCATION_OF_THE-MODULE');
 <br/><br/>
 
@@ -120,15 +120,15 @@ First we need to run 'npm init' into the terminal. This will initialise the 'npm
 Then we will run 'npm i #PACKAGE_NAME' or 'npm install #PACKAGE_NAME'.<br/>
 There are two types of packeges or we call them dependancy. One is called Simple dipendency and One is called DevDependency.<br/>
 
-<h4>Using Nodemon</h4>
+<h3>Using Nodemon</h3>
 This is a DevDependency which we use to run the terminal automatically every time we change our code. Basically we don't need to run 'node index.js' every time.<br/>
 There are two method to install nodemon. The local method and global method.
 
-<h6>LOCAL-METHOD</h6>
+<h4>LOCAL-METHOD</h4>
 In this method, we cannot use nodemon outside the file we are working now. run 'npm i nopdemon--save-dev' dev means developer.<br/>
 Then find out 'package.json' file. Then change this ("test": "echo \"Error: no test specified\" && exit 1") into ("start": "nodemon index.js"). Then into the terminal, simply run 'node start'.<br/>
 
-<h6>GLOBAL-METHOD</h6>
+<h4>GLOBAL-METHOD</h4>
 In this method we install nodemon globaly. means we can use it in any project. Run 'npm i nodemon--global' If this returns any error. Run 'sudo npm i nodemon--global' this will ask your system password. Because it will install into your entire system.<br/>
 To run it we don't need to edit any code in 'package.json' file. We simply run 'nodemon index.js'
 <br/><br/>
@@ -140,13 +140,12 @@ In 'package.json' file we can find the version that we installed of a package. (
 Here '^' means it support only minor and patch release. '~' means it support only patch release and '\*' means all release.
 <br/><br/>
 
-<h4>CHECK FOR UPDATE</h4>
-
+<h4>CHECK-FOR-UPDATE</h4>
 'npm outdated'
 
-<h4>UPDATE A PACKAGE</h4>
-
+<h4>UPDATE-A-PACKAGE</h4>
 'npm update #PACKAGE_NAME'
+<br/><br/>
 
-<h6>IMPORTENT NOTE FOR NPM PACKAGE</h6>
+<h3>Importent Note For NPM Package</h3>
 When we send our code to github or any where. We don't send the 'node_module' folder. That's why when someone will download the code. they need run 'npm install' to get the 'node_module' folder. This instraction will download the required packages mentioned in 'package.json' folder.
