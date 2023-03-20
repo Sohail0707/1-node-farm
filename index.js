@@ -64,13 +64,14 @@ const tempProduct = fs.readFileSync(
 // Reading data.json
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
 const dataObj = JSON.parse(data); //Converted the json data into js data object
-// console.log(dataObj);
 
 const server = http.createServer((req, res) => {
-  const pathName = req.url;
+  const { query, pathname } = url.parse(req.url, true);
 
   // Overview Page
-  if (pathName === '/' || pathName === '/Overview') {
+  if (pathname === '/' || pathname === '/Overview') {
+    res.writeHead(200, { 'Content-type': 'text/html' }); // Specifies the type of content
+
     const cardsHtml = dataObj
       .map((el) => replaceTemplate(tempCard, el))
       .join('');
@@ -79,12 +80,16 @@ const server = http.createServer((req, res) => {
   }
 
   // Product Page
-  else if (pathName === '/Product') {
-    res.end('This is the Product');
+  else if (pathname === '/Product') {
+    res.writeHead(200, { 'Content-type': 'text/html' }); // Specifies the type of content
+
+    const productHtml = dataObj[query.id];
+    const output = replaceTemplate(tempProduct, productHtml);
+    res.end(output);
   }
 
   // API Page
-  else if (pathName === '/api') {
+  else if (pathname === '/api') {
     res.writeHead(200, { 'Content-type': 'application/json' });
     res.end(data); //this data coming from the top level code
   }

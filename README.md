@@ -103,3 +103,12 @@ const replaceTemplate = (temp, product) => {
 let output = temp.replace(/{%PRODUCTNAME%}/g, product.productName);
 return output;
 }
+
+## Parsing
+
+What I learnt, parsing is basicaly extracting variables from an 'url'.
+
+### Syntax-Parsing_url
+
+const { query, pathname } = url.parse(req.url, true);<br/>
+What it does is, it extracts different variables of the url. Then it will make 2 variables. And the will asign the value of 'query' and 'pathname' variable from url to the 'query' and 'pathname' which we decleared here. This is a latest syntax I am also less familier with it.
