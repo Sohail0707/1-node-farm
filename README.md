@@ -124,3 +124,24 @@ This function has no name.
 ### IMPORT OWN MODULE
 
 const #MODULE_NAME = require('#LOCATION_OF_THE-MODULE');
+
+## INSTALLING NPM PACKAGES
+
+First we need to run 'npm init' into the terminal. This will initialise the 'npm' and will create a 'package.json' file. During initialisation, this will ask some questions.<br/>
+Then we will run 'npm i #PACKAGE_NAME' or 'npm install #PACKAGE_NAME'.<br/>
+There are two types of packeges or we call them dependancy. One is called Simple dipendency and One is called DevDependency.
+
+### USING NODEMON
+
+This is a DevDependency which we use to run the terminal automatically every time we change our code. Basically we don't need to run 'node index.js' every time.<br/>
+There are two method to install nodemon. The local method and global method.
+
+#### LOCAL METHOD
+
+In this method, we cannot use nodemon outside the file we are working now. run 'npm i nopdemon--save-dev' dev means developer.<br/>
+Then find out 'package.json' file. Then change this ("test": "echo \"Error: no test specified\" && exit 1") into ("start": "nodemon index.js"). Then into the terminal, simply run 'node start'.
+
+#### GLOBAL METHOD
+
+In this method we install nodemon globaly. means we can use it in any project. Run 'npm i nodemon--global' If this returns any error. Run 'sudo npm i nodemon--global' this will ask your system password. Because it will install into your entire system.<br/>
+To run it we don't need to edit any code in 'package.json' file. We simply run 'nodemon index.js'

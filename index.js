@@ -77,7 +77,7 @@ const server = http.createServer((req, res) => {
   // API Page
   else if (pathname === '/api') {
     res.writeHead(200, { 'Content-type': 'application/json' });
-    res.end(data); //this data coming from the top level code
+    res.end(data); //this data coming from the top level code.
   }
 
   // Not Found

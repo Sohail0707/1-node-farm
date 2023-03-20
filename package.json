@@ -1,0 +1,22 @@
+{
+  "name": "node-farm",
+  "version": "1.0.0",
+  "description": "Learning Back-end development with node-farm project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sohail0707/1-node-farm.git"
+  },
+  "author": "Sohail Rana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sohail0707/1-node-farm/issues"
+  },
+  "homepage": "https://github.com/Sohail0707/1-node-farm#readme",
+  "dependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
