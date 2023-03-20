@@ -1,14 +1,12 @@
-# 1-Node-Farm
-
-Right now I'm learning back-end web development from udemy. This project is made using NodeJs
-
 ## USING MODULE
 
+We initialise the modules at the begining of the code that we could use that anywhere in the code<br/>
 const #MODULE_NAME = require('#ACTUAL_MODULE_NAME / LOCATION_IF_MODULE_IS_USER_DEFINED');
 
-## BLOCKING, SYNCHRONOUS CODE
+## Reading And Writing File:
 
-This code blocks the single thread untill it finish execution. this code can return a value or data, which we can store in a variable.
+<h2>Blocking Or Synchronous Code</h2>
+This code blocks the single thread untill it finish execution. this code can return a value or data, which we can store in a variable.<br/>
 
 ### Syntax-read-file
 
@@ -18,8 +16,7 @@ const #VARIABLE-NAME = fs.readFileSync('#FILE_LOCATION', 'utf-8');
 
 fs.writeFileSync('#FILE_LOCATION', #DATA_WANT_TO_WRITE);
 
-## NON-BLOCKING ASYNCHRONOUS CODE
-
+<h3>Non-Blocking Or Asynchronous Code</h3>
 we never store it in a variable. We use callback function to read the data in the background. (err, data)=> this is the callback function for read file. the argument 'data' can has any name. (err) => this is the callback function for write file. because it doesn't return any data. We can use the 'data' to execute a code and also check for 'err' to print an error message.
 
 ### Syntax-read-file
@@ -29,6 +26,7 @@ fs.readFile('#FILE_LOCATION', 'utf-8', (err, #DATA_NAME) =>{CODE wanna execute a
 ### Syntax-write-file
 
 fs.writeFile('#FILE_LOCATION', `#DATA_WANT_TO_WRITE`, 'utf-8', (err) => { CODE wanna execute after file-write});
+<br/><br/>
 
 ## CREATING A SERVER
 

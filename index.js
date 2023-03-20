@@ -2,10 +2,12 @@
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
-const replaceTemplate = require('./Module/replaceTemplate');
+
+// IMPORTING USER DEFINED MODULE
+const replaceTemplate = require('./ModuleS/replaceTemplate');
 
 /*
-// Blocking Synchronous Code /////////////////////////////
+// BLOCKING OR SYNCHRONOUS CODE /////////////////////////////
 const textIn = fs.readFileSync('./txt/input.txt', 'utf-8');
 console.log(textIn);
 
@@ -13,7 +15,7 @@ const textOut = `This is what we know about the avcado: ${textIn}.\nCreated on $
 fs.writeFileSync('./txt/Output.txt', textOut);
 console.log('File has been written');
 
-// Non-Blocking Asynchronous Code ////////////////////////
+// NON-BLOCKING OR ASYNCHRONOUS CODE ////////////////////////
 
 fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
   if (err) return console.log('ERROR 💥');
@@ -30,9 +32,9 @@ fs.readFile('./txt/start.txt', 'utf-8', (err, data1) => {
   });
 });*/
 
-// SERVER ///////////////////////////
+// CREATING A SERVER //////////////////////////////
 
-// Reading template. this code can be written synchronously because it will executed once at the bigining
+// READING THE TEMPLATES SYNCHRONOUSLY, BECAUSE THIS CODE GONNA RUN ONCE AT THE BEGINING
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   'utf-8'
@@ -47,16 +49,16 @@ const tempProduct = fs.readFileSync(
   'utf-8'
 );
 
-// Reading data.json
+// READING data.json
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
-const dataObj = JSON.parse(data); //Converted the json data into js data object
+const dataObj = JSON.parse(data); //CONVERTED THE JSON DATA IN TO A JAVASCRIPT OBJECT
 
 const server = http.createServer((req, res) => {
   const { query, pathname } = url.parse(req.url, true);
 
-  // Overview Page
+  // Overview Page /////////////////////////////////
   if (pathname === '/' || pathname === '/Overview') {
-    res.writeHead(200, { 'Content-type': 'text/html' }); // Specifies the type of content
+    res.writeHead(200, { 'Content-type': 'text/html' }); // SPECIFYING TYPE OF CONTENT WE ARE SENDING TO BROWSER
 
     const cardsHtml = dataObj
       .map((el) => replaceTemplate(tempCard, el))
@@ -65,22 +67,22 @@ const server = http.createServer((req, res) => {
     res.end(output);
   }
 
-  // Product Page
+  // Product Page //////////////////////////////////
   else if (pathname === '/Product') {
-    res.writeHead(200, { 'Content-type': 'text/html' }); // Specifies the type of content
+    res.writeHead(200, { 'Content-type': 'text/html' }); // SPECIFYING TYPE OF CONTENT WE ARE SENDING TO BROWSER
 
     const productHtml = dataObj[query.id];
     const output = replaceTemplate(tempProduct, productHtml);
     res.end(output);
   }
 
-  // API Page
+  // API Page //////////////////////////////////////
   else if (pathname === '/api') {
     res.writeHead(200, { 'Content-type': 'application/json' });
-    res.end(data); //this data coming from the top level code.
+    res.end(data); //THIS DATA COMING FROM THE TOP LEVEL CODE.
   }
 
-  // Not Found
+  // Not Found ////////////////////////////////////
   else {
     res.writeHead(404, {
       'content-type': 'text/html',
@@ -89,6 +91,7 @@ const server = http.createServer((req, res) => {
   }
 });
 
+// THE IP AND PORT WHERE WE ARE GONNA SEND RESPONSE TO THE USER ONCE THEY VISIT
 server.listen(8000, '127.0.0.1', () => {
   console.log('Listening to port 8000');
 });
