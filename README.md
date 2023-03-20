@@ -72,3 +72,7 @@ res.writeHead(#STATUS_CODE, {
 
 In an API we read a file from memory, and send the data to the browser as a response.
 When I'm implementing this, I found that I wrote the readFile code into the server code. Although it's not a major problem. But when a client will send a request to the server, the fileRead code will be executed each time. That's why wrote the fileRead code at the top level code.
+
+## HTML Template
+
+Here we have templates to show pages of NODE FARM application. Template is just a HTML file. For a certain request, We will send the HTML page as a response. To convert a HTML file into a template, I'll be replacing every data with placeholder. And at time of sending the template to the browser, I'll replace the data with actual data from the JSON file.
